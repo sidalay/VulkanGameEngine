@@ -1,8 +1,8 @@
-#include "exp_window.hpp"
+#include "window.hpp"
 
 namespace exp {
 
-  ExpWindow::ExpWindow(int width, int height, std::string name)
+  Window::Window(int width, int height, std::string name)
     : m_width{width}, 
       m_height{height}, 
       m_name{name} 
@@ -10,15 +10,15 @@ namespace exp {
     InitWindow();
   }
 
-  ExpWindow::~ExpWindow() {
+  Window::~Window() {
     glfwDestroyWindow(m_window);
     glfwTerminate();
   }
 
-  void ExpWindow::InitWindow() {
+  void Window::InitWindow() {
     glfwInit();
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-    GLFWWINDOWHINT(GLFW_RESIZABLE, GLFW_FALSE);
+    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
     m_window = glfwCreateWindow(m_width, m_height, m_name.c_str(), nullptr, nullptr);
   }
